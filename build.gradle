@@ -29,6 +29,7 @@ ext {
 
 release {
     versionPropertyFile = "$rootDir/gradle/version.gradle"
+    versionPatterns = []
 }
 
 mainClassName = mainClass

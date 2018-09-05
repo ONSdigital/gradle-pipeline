@@ -41,7 +41,7 @@ release {
 mainClassName = mainClass
 
 def getVersion = rootProject.file("version.txt").text.split('=').last().trim()
-version = 1.1
+version = 1.6
 
 apply from: "$rootDir/gradle/version.gradle"
 apply from: "$rootDir/gradle/provided.gradle"

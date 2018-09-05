@@ -31,19 +31,17 @@ ext {
 
 release {
     failOnCommitNeeded = false
-//    versionPropertyFile = "$rootDir/gradle/version.gradle"
-    versionPropertyFile = "$rootDir/build.gradle"
+    failOnUnversionedFiles = false
+    versionPropertyFile = "$rootDir/version.gradle"
     versionPatterns = [/(\w+)([^\w]*$)/: { Matcher m, Project p -> m.replaceAll("${(m[0][1] as int) + 1}${m[0][2]}") }]
-//    /(\w+)([^\w]*$)/: { Matcher m, Project p -> m.replaceAll("${(m[0][1] as int) + 1}${m[0][2]}") }
-//    /[.]*\.(\d+)\.(\d+)[.]*/: { Matcher m, Project p -> m.replaceAll(".${(m[0][1] as int) + 1}.0") }
 }
 
 mainClassName = mainClass
 
-def getVersion = rootProject.file("version.txt").text.split('=').last().trim()
-version = 1.6
+//def getVersion = rootProject.file("version.txt").text.split('=').last().trim()
 
-apply from: "$rootDir/gradle/version.gradle"
+apply from: "$rootDir/version.gradle"
+apply from: "$rootDir/gradle/bump.gradle"
 apply from: "$rootDir/gradle/provided.gradle"
 apply from: "$rootDir/gradle/repositories.gradle"
 apply from: "$rootDir/gradle/dependencies.gradle"

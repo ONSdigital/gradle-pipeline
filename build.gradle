@@ -27,14 +27,14 @@ ext {
     mainClass="uk.gov.ons.registers.service.SamplingServiceMain"
 }
 
-release {
-    versionPropertyFile = "$rootDir/gradle/version.gradle"
-}
+//release {
+//    versionPropertyFile = "$rootDir/gradle/version.gradle"
+//}
 
 mainClassName = mainClass
 
-//def getVersion = rootProject.file(versionFile).text.split('=').last().trim()
-//version = getVersion
+def getVersion = rootProject.file("version.txt").text.split('=').last().trim()
+version = getVersion
 
 apply from: "$rootDir/gradle/version.gradle"
 apply from: "$rootDir/gradle/provided.gradle"

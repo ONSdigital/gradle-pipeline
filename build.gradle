@@ -1,5 +1,3 @@
-import java.util.regex.Matcher
-
 buildscript {
     repositories {
         maven {
@@ -29,19 +27,13 @@ ext {
     mainClass="uk.gov.ons.registers.service.SamplingServiceMain"
 }
 
-release {
-    failOnCommitNeeded = false
-    failOnUnversionedFiles = false
-    versionPropertyFile = "$rootDir/version.gradle"
-    versionPatterns = [/(\w+)([^\w]*$)/: { Matcher m, Project p -> m.replaceAll("${(m[0][1] as int) + 1}${m[0][2]}") }]
-}
-
 mainClassName = mainClass
 
 //def getVersion = rootProject.file("version.txt").text.split('=').last().trim()
 
 apply from: "$rootDir/version.gradle"
 apply from: "$rootDir/gradle/bump.gradle"
+apply from: "$rootDir/gradle/release.gradle"
 apply from: "$rootDir/gradle/provided.gradle"
 apply from: "$rootDir/gradle/repositories.gradle"
 apply from: "$rootDir/gradle/dependencies.gradle"

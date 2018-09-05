@@ -1,0 +1,26 @@
+import java.util.regex.Matcher
+
+release {
+    failOnCommitNeeded = false
+    failOnUnversionedFiles = false
+    versionPropertyFile = "$rootDir/version.gradle"
+    versionPatterns = [/(\w+)([^\w]*$)/: { Matcher m, Project p -> m.replaceAll("${(m[0][1] as int) + 1}${m[0][2]}") }]
+}
+
+task devrelease (type:Exec){
+    commandLine "gradle release -Prelease.useAutomaticVersion=true -Prelease.releaseVersion=${version} -Prelease.newVersion=2.6"
+}
+
+task fooExec(type: Exec) {
+    args newVersion
+    if (newVersion ==~ /\d{1}.\d{1}$/) {
+        // chmod +x release.sh
+        commandLine './release.sh' , "$version" , newVersion
+    } else {
+        commandLine 'echo', "ERROR: Invalid version format [$newVersion]. New version must follow pattern [\\d{1}.\\d{1}\$]"
+    }
+//    commandLine './run.sh' , arg1
+//    commandLine 'gradle', "release -Prelease.useAutomaticVersion=true -Prelease.releaseVersion=${version} -Prelease.newVersion=2.6"
+//    commandLine 'echo', "Hello world! ${rootDir} ${version} $newVersion"
+}
+

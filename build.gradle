@@ -27,9 +27,10 @@ ext {
     mainClass="uk.gov.ons.registers.service.SamplingServiceMain"
 }
 
-//release {
+release {
 //    versionPropertyFile = "$rootDir/gradle/version.gradle"
-//}
+    versionPropertyFile = "$rootDir/build.gradle"
+}
 
 mainClassName = mainClass
 

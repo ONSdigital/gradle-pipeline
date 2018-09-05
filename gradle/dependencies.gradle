@@ -1,0 +1,10 @@
+dependencies {
+    compile files("lib/sml-1.0-SNAPSHOT-jar-with-dependencies.jar")
+//    classpath   group: 'org.github.ngbinh.scalastyle',     name: "gradle-scalastyle-plugin_${scalaMinorVersion}",     version: '1.0.1'
+//    provided    group: 'org.scala-lang',    name: 'scala-library',                              bump: scalaCompleteVersion
+    compile     group: 'org.scala-lang',    name: 'scala-library',                      version: scalaCompleteVersion
+    provided    group: 'org.apache.spark',  name: "spark-sql_${scalaMinorVersion}",     version: cdhVersion
+    testCompile group: 'org.scalatest',     name: "scalatest_${scalaMinorVersion}",     version: '3.0.4'
+    testCompile group: 'org.scalamock',     name: "scalamock_${scalaMinorVersion}",     version: '4.1.0'
+    testRuntime group: 'org.pegdown',       name: 'pegdown',                            version: '1.4.2'
+}

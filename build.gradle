@@ -29,8 +29,6 @@ ext {
 
 mainClassName = mainClass
 
-//def getVersion = rootProject.file("version.txt").text.split('=').last().trim()
-
 apply from: "$rootDir/version.gradle"
 apply from: "$rootDir/gradle/bump.gradle"
 apply from: "$rootDir/gradle/release.gradle"
